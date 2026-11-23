@@ -80,7 +80,6 @@ function renderPaymentView() {
           <strong class="cash-change-val" id="cashChangeVal">Rp 0</strong>
         </div>
       </div>
-      <small class="text-muted">Terima uang tunai di kasir lalu centang konfirmasi di bawah.</small>
     `;
     perbaruiKembalianCash();
   }
