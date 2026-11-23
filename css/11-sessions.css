@@ -1,4 +1,15 @@
 /* ==================== LAYAR 4: SESI PEMAIN ==================== */
+.session-panel {
+  display: none;
+}
+
+.session-panel.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  animation: pudarMasuk 0.2s ease;
+}
+
 .session-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

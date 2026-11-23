@@ -100,9 +100,16 @@ function renderSessionsView() {
       </div>
     `;
 
-  // Tampilkan panel sesuai tab yang aktif (desktop & mobile)
+  // Tampilkan hanya panel sesuai tab yang dipilih
   document.querySelectorAll(".session-panel").forEach((panel) => {
-    panel.classList.toggle("active", panel.dataset.scol === state.mobileSessionTab);
+    const aktif = panel.dataset.scol === state.mobileSessionTab;
+    panel.classList.toggle("active", aktif);
+    panel.hidden = !aktif;
+  });
+
+  // Sinkronkan tombol tab yang aktif
+  document.querySelectorAll("#sessionTabs .seg-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.stab === state.mobileSessionTab);
   });
 }
 
