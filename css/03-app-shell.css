@@ -1,0 +1,10 @@
+/* ==================== WADAH APLIKASI UTAMA ==================== */
+.app-shell {
+  display: none;
+}
+
+.app-shell.visible {
+  display: block;
+  animation: pudarMasuk 0.3s ease;
+}
+

@@ -1,0 +1,68 @@
+/* ==================== VARIABEL WARNA & TEMA ==================== */
+:root {
+  --bg: #f3f5fa;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --border: #e5eaf2;
+  --border-strong: #cbd5e1;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --primary: #254bf5;
+  --primary-hover: #1d3dd8;
+  --primary-soft: #eef2ff;
+  --primary-border: #c7d2fe;
+
+  --green: #16a34a;
+  --green-cta: #2e7d5b;
+  --green-cta-hover: #236448;
+  --green-soft: #ecfdf5;
+  --green-border: #bbf7d0;
+
+  --amber: #b45309;
+  --amber-soft: #fffbeb;
+  --amber-border: #fde68a;
+
+  --purple: #7c3aed;
+  --purple-soft: #f5f3ff;
+
+  --danger: #b91c1c;
+  --danger-hover: #991b1b;
+  --danger-soft: #fef2f2;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+/* ==================== RESET & GAYA DASAR ==================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Kontainer lebar agar layar desktop terasa lega */
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+

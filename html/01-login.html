@@ -1,0 +1,60 @@
+  <!-- ==================== HALAMAN LOGIN ==================== -->
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <!-- Sisi Kiri: Logo dan Subjudul -->
+      <div class="login-brand-side">
+        <div class="login-logo-wrap">
+          <img src="IMKLogo.png" alt="SmashQueue Pro" class="login-logo-img" />
+        </div>
+        <p class="login-brand-desc">Sistem Pengelolaan Antrean &amp; Sesi Bulu Tangkis</p>
+      </div>
+
+      <!-- Sisi Kanan: Formulir Masuk Admin -->
+      <div class="login-form-side">
+        <h1 class="login-title">Masuk sebagai Admin</h1>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginUsername" class="field-label">Username / Email</label>
+            <input
+              type="text"
+              id="loginUsername"
+              class="input input-lg"
+              value="david.admin"
+              placeholder="Masukkan username atau email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword" class="field-label">Password</label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="loginPassword"
+                class="input input-lg"
+                value="smashqueue2026"
+                placeholder="Masukkan password"
+                required
+              />
+              <button
+                type="button"
+                id="btnTogglePassword"
+                class="eye-toggle-btn"
+                aria-label="Tampilkan atau sembunyikan password"
+              >
+                <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg mt-16">
+            Masuk ke Dashboard
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+

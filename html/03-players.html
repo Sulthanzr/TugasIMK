@@ -1,0 +1,113 @@
+      <!-- ==================== LAYAR 2: MANAJEMEN DATA PEMAIN ==================== -->
+      <section id="view-players" class="view-section">
+        <div class="page-head">
+          <div>
+            <h1>Manajemen Data Pemain</h1>
+          </div>
+          <div class="status-pills-row desktop-only">
+            <span class="soft-pill green" id="pillPlaying2">▷ Bermain 0</span>
+            <span class="soft-pill blue" id="pillWaiting2">⏱ Menunggu 0</span>
+            <span class="soft-pill amber" id="pillResting2">☕ Istirahat 0</span>
+          </div>
+        </div>
+
+        <div class="two-col-layout">
+          <!-- Kolom Kiri: Daftar Pemain -->
+          <div class="card">
+            <div class="card-head compact desktop-only">
+              <div>
+                <h2 class="card-title">Daftar Pemain</h2>
+                <p class="card-sub" id="playerListMeta">0 pemain aktif hari ini </p>
+              </div>
+            </div>
+
+            <!-- Pencarian dan Filter Level -->
+            <div class="filter-bar">
+              <div class="search-group">
+                <label for="searchPlayerInput" class="field-label">Cari pemain</label>
+                <div class="input-icon-wrap">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" id="searchPlayerInput" class="input" placeholder="Ketik nama pemain" />
+                </div>
+              </div>
+
+              <div class="level-filter-group">
+                <span class="field-label">Filter level</span>
+                <div class="segmented" id="levelFilterSeg">
+                  <button class="seg-btn active" data-level="ALL">Semua</button>
+                  <button class="seg-btn" data-level="A">Level A</button>
+                  <button class="seg-btn" data-level="B">Level B</button>
+                  <button class="seg-btn" data-level="C">Level C</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabel Pemain Desktop -->
+            <div class="table-wrap desktop-only">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Pemain</th>
+                    <th>JK</th>
+                    <th>Level</th>
+                    <th>Status</th>
+                    <th>Game</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="playersTableBody"></tbody>
+              </table>
+            </div>
+
+            <!-- Kartu Pemain Mobile -->
+            <div class="mobile-only mobile-players-list" id="playersMobileList"></div>
+
+            <!-- Paginasi Daftar Pemain -->
+            <div class="pagination-bar" id="playersPagination"></div>
+
+            <!-- Tombol Buka Form Tambah Pemain (Mobile) -->
+            <button class="btn btn-primary btn-block mobile-only mt-12" id="btnMobileToggleAdd">
+              + Daftarkan Pemain Baru
+            </button>
+          </div>
+
+          <!-- Kolom Kanan: Formulir Tambah & Ubah Level -->
+          <div class="side-stack">
+            <!-- Formulir Daftarkan Pemain Baru -->
+            <div class="card" id="addPlayerCard">
+              <h2 class="card-title mb-16">Daftarkan Pemain Baru</h2>
+              <form id="addPlayerForm">
+                <div class="form-group">
+                  <label for="newPlayerName" class="field-label">Nama pemain</label>
+                  <input type="text" id="newPlayerName" class="input" placeholder="Contoh: Budi Santoso" required />
+                  <small class="field-hint">Tulis sesuai nama yang disebutkan pemain.</small>
+                </div>
+
+                <div class="form-group">
+                  <span class="field-label">Jenis kelamin</span>
+                  <div class="segmented full" id="newGenderSeg">
+                    <button type="button" class="seg-btn active" data-value="L">Laki-laki</button>
+                    <button type="button" class="seg-btn" data-value="P">Perempuan</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <span class="field-label">Level kemampuan</span>
+                  <div class="segmented full" id="newLevelSeg">
+                    <button type="button" class="seg-btn" data-value="A">Level A</button>
+                    <button type="button" class="seg-btn active" data-value="B">Level B</button>
+                    <button type="button" class="seg-btn" data-value="C">Level C</button>
+                  </div>
+                </div>
+
+                <div class="btn-row">
+                  <button type="submit" class="btn btn-primary flex-1">+ Daftarkan Pemain</button>
+                  <button type="button" class="btn btn-outline" id="btnResetAddForm">Batal</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+

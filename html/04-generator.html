@@ -1,0 +1,123 @@
+      <!-- ==================== LAYAR 3: GENERATOR ANTREAN ==================== -->
+      <section id="view-generator" class="view-section">
+        <div class="page-head">
+          <div>
+            <h1>Generate Antrean &amp; Pertandingan</h1>
+            <p class="page-desc">Susun pasangan otomatis dari pemain yang menunggu, lalu tinjau dan sesuaikan sebelum diterapkan.</p>
+          </div>
+          <button class="btn btn-primary mobile-full-btn" id="btnGenerateQueue">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 9-9"/><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/></svg>
+            Generate Antrean
+          </button>
+        </div>
+
+        <div class="two-col-layout">
+          <!-- Kolom Kiri: Pratinjau Hasil Generate -->
+          <div class="card">
+            <div class="card-head compact">
+              <div>
+                <h2 class="card-title">Pratinjau Hasil Generate</h2>
+                <p class="card-sub" id="genPreviewMeta">0 pertandingan dari 0 pemain yang menunggu</p>
+              </div>
+              <span class="soft-pill neutral" id="genStatusBadge">Belum ada pratinjau</span>
+            </div>
+
+            <div class="alert-box blue mt-12">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Pemain yang belum pernah bermain diprioritaskan. Anda masih bisa menukar pemain atau lapangan sebelum menerapkan.</span>
+            </div>
+
+            <div id="genPreviewList" class="gen-preview-list"></div>
+
+            <!-- Bilah Aksi Terapkan Pratinjau -->
+            <div class="gen-apply-bar" id="genApplyBar">
+              <span class="gen-apply-note desktop-only" id="genApplyNote">Belum ada antrean untuk diterapkan</span>
+              <div class="btn-row">
+                <button class="btn btn-outline" id="btnDiscardGen" disabled>Batalkan<span class="desktop-inline"> Perubahan</span></button>
+                <button class="btn btn-primary" id="btnApplyGen" disabled>✓ Terapkan ke Antrean</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Parameter, Prioritas Giliran, dan Permintaan Pasangan -->
+          <div class="side-stack">
+            <!-- Parameter Generate -->
+            <div class="card">
+              <h2 class="card-title mb-16">Parameter Generate</h2>
+
+              <div class="toggle-row">
+                <span>Utamakan pemain yang belum bermain</span>
+                <div class="toggle-right">
+                  <span class="toggle-state" id="lblParamPrioritize">Aktif</span>
+                  <label class="switch">
+                    <input type="checkbox" id="paramPrioritize" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="toggle-row">
+                <span>Seimbangkan level dalam satu pasangan</span>
+                <div class="toggle-right">
+                  <span class="toggle-state" id="lblParamBalance">Aktif</span>
+                  <label class="switch">
+                    <input type="checkbox" id="paramBalance" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="toggle-row">
+                <span>Terapkan permintaan pasangan</span>
+                <div class="toggle-right">
+                  <span class="toggle-state" id="lblParamPairReq">Aktif</span>
+                  <label class="switch">
+                    <input type="checkbox" id="paramPairReq" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group mt-16">
+                <span class="field-label">Alokasi lapangan</span>
+                <div class="segmented full" id="paramCourtAlloc">
+                  <button type="button" class="seg-btn active" data-value="auto">Otomatis</button>
+                  <button type="button" class="seg-btn" data-value="manual">Pilih manual</button>
+                </div>
+                <small class="field-hint" id="courtAllocHint">Otomatis mengisi Lapangan 1 dan 2 sesuai urutan.</small>
+              </div>
+            </div>
+
+            <!-- Daftar Prioritas Giliran -->
+            <div class="card">
+              <div class="card-head compact">
+                <h2 class="card-title">Prioritas Giliran</h2>
+                <span class="soft-pill blue" id="priorityCountBadge">⏱ 0 menunggu</span>
+              </div>
+              <p class="card-sub mb-12">Urutan prioritas berdasarkan jumlah game paling sedikit lalu waktu daftar.</p>
+              <ol class="priority-list" id="priorityList"></ol>
+            </div>
+
+            <!-- Permintaan Pasangan -->
+            <div class="card">
+              <div class="card-head compact mb-12">
+                <h2 class="card-title" id="pairReqTitle">Permintaan Pasangan (0)</h2>
+              </div>
+
+              <!-- Formulir Tambah Permintaan Pasangan -->
+              <div class="pair-req-form mb-12">
+                <div class="pair-select-row">
+                  <select id="pairReqP1" class="input"></select>
+                  <select id="pairReqP2" class="input"></select>
+                </div>
+                <button type="button" class="btn btn-soft-blue btn-sm btn-block mt-8" id="btnAddPairReq">
+                  + Tambah Permintaan Pasangan
+                </button>
+              </div>
+
+              <div id="pairReqList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+

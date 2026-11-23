@@ -1,0 +1,110 @@
+/* ==================== TOMBOL & LENCANA ==================== */
+.btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: 0.16s ease;
+  white-space: nowrap;
+}
+
+.btn:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
+
+.btn-green {
+  background: var(--green-cta);
+  color: #fff;
+}
+.btn-green:hover:not(:disabled) { background: var(--green-cta-hover); }
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover:not(:disabled) { background: var(--danger-hover); }
+
+.btn-outline {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.btn-outline:hover:not(:disabled) { background: var(--surface-soft); }
+
+.btn-soft-blue {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: var(--primary-border);
+}
+.btn-soft-blue:hover:not(:disabled) { background: #e0e7ff; }
+
+.btn-icon-remove {
+  border: none;
+  background: var(--danger-soft);
+  color: var(--danger);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.btn-sm {
+  padding: 6px 11px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn-block { width: 100%; }
+.btn-row { display: flex; align-items: center; gap: 10px; }
+.flex-1 { flex: 1; }
+
+.soft-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.soft-pill.blue { background: var(--primary-soft); color: var(--primary); }
+.soft-pill.green { background: var(--green-soft); color: var(--green-cta); }
+.soft-pill.amber { background: var(--amber-soft); color: var(--amber); }
+.soft-pill.purple { background: var(--purple-soft); color: var(--purple); }
+.soft-pill.neutral { background: #f1f5f9; color: var(--text-muted); }
+
+.outline-pill-blue {
+  border: 1px solid var(--primary-border);
+  background: #f8faff;
+  color: var(--primary);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+

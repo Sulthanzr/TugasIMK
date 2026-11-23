@@ -1,0 +1,86 @@
+      <!-- ==================== LAYAR 4: MANAJEMEN SESI PEMAIN ==================== -->
+      <section id="view-sessions" class="view-section">
+        <div class="page-head">
+          <div>
+            <h1>Manajemen Sesi Pemain</h1>
+          </div>
+          <div class="status-pills-row desktop-only">
+            <span class="soft-pill blue" id="sessBadgeWaiting">0 Menunggu</span>
+            <span class="soft-pill amber" id="sessBadgeResting">0 Istirahat</span>
+            <span class="soft-pill green" id="sessBadgeLeft">0 Pulang</span>
+          </div>
+        </div>
+
+        <div class="two-col-layout">
+          <!-- Kolom Kiri: Daftar Pemain Berdasarkan Status -->
+          <div class="card session-main-card">
+            <div class="session-header-bar">
+              <div>
+                <h2 class="card-title">Daftar Sesi Pemain</h2>
+                <p class="card-sub">Pilih tab status untuk melihat dan mengelola pemain.</p>
+              </div>
+            </div>
+
+            <!-- Tab Status (Desktop & Mobile) -->
+            <div class="segmented full mb-16" id="sessionTabs">
+              <button type="button" class="seg-btn active" data-stab="waiting" id="mTabWaiting">Menunggu 0</button>
+              <button type="button" class="seg-btn" data-stab="resting" id="mTabResting">Istirahat 0</button>
+              <button type="button" class="seg-btn" data-stab="left" id="mTabLeft">Pulang 0</button>
+            </div>
+
+            <!-- Panel Menunggu -->
+            <div class="session-panel active" data-scol="waiting">
+              <div id="sessionWaitingList" class="session-cards"></div>
+              <div class="session-pager" id="sessionWaitingPager"></div>
+            </div>
+
+            <!-- Panel Istirahat -->
+            <div class="session-panel" data-scol="resting">
+              <div id="sessionRestingList" class="session-cards"></div>
+            </div>
+
+            <!-- Panel Pulang -->
+            <div class="session-panel" data-scol="left">
+              <div id="sessionLeftList" class="session-cards"></div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Penjelasan & Aturan Status -->
+          <div class="card session-guide-card">
+            <div class="col-title-icon mb-12">
+              <span class="mini-icon blue">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </span>
+              <h2 class="card-title">Panduan Status Sesi</h2>
+            </div>
+
+            <div class="guide-list">
+              <div class="guide-item">
+                <span class="soft-pill blue mb-8">Menunggu</span>
+                <p class="rule-title">Siap masuk ke antrean berikutnya</p>
+                <p class="rule-sub">Pemain otomatis masuk perhitungan generator. Klik <strong>Istirahat</strong> untuk menjeda sementara.</p>
+              </div>
+
+              <div class="guide-item">
+                <span class="soft-pill amber mb-8">Istirahat</span>
+                <p class="rule-title">Sementara tidak ikut antrean</p>
+                <p class="rule-sub">Klik <strong>Kembali Antre</strong> untuk bergabung lagi, atau <strong>Pulangkan</strong> untuk menuju menu pembayaran.</p>
+              </div>
+
+              <div class="guide-item">
+                <span class="soft-pill green mb-8">Pulang</span>
+                <p class="rule-title">Sesi selesai &amp; pembayaran lunas</p>
+                <p class="rule-sub">Pemain sudah mengakhiri sesi. Detail transaksi tersimpan otomatis di <strong>Pembayaran &amp; Riwayat</strong>.</p>
+              </div>
+            </div>
+
+            <div class="alert-box amber mt-16">
+              <div>
+                <strong>⏱ Riwayat game tetap dihitung</strong>
+                <p class="small-p">Jumlah game tidak direset saat istirahat agar prioritas giliran tetap adil saat kembali antre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+

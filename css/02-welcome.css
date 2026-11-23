@@ -1,0 +1,85 @@
+/* ==================== POP-UP SAMBUTAN LOGIN ==================== */
+.welcome-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 200;
+}
+
+.welcome-backdrop.open {
+  display: flex;
+  animation: pudarMasuk 0.22s ease;
+}
+
+.welcome-dialog {
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 36px 40px;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  animation: skalaMasuk 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.check-anim-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+}
+
+.checkmark-svg {
+  width: 72px;
+  height: 72px;
+  display: block;
+}
+
+.checkmark-circle {
+  stroke: var(--green);
+  stroke-width: 3.2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-linecap: round;
+  animation: gambarLingkaran 0.55s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  stroke: var(--green);
+  stroke-width: 3.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: gambarCentang 0.32s cubic-bezier(0.65, 0, 0.45, 1) 0.42s forwards;
+}
+
+.welcome-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+@keyframes gambarLingkaran {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes gambarCentang {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pudarMasuk {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes skalaMasuk {
+  from { opacity: 0; transform: scale(0.92) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+

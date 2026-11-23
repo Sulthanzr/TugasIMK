@@ -1,0 +1,292 @@
+/* ==================== RESPONSIF (TABLET & MOBILE) ==================== */
+@media (max-width: 1140px) {
+  .two-col-layout {
+    grid-template-columns: 1fr;
+  }
+  .session-grid {
+    grid-template-columns: 1fr;
+  }
+  .courts-grid {
+    grid-template-columns: 1fr;
+  }
+  .desktop-nav {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 820px) {
+  .login-card {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+  }
+  .login-brand-side {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 36px 28px 28px;
+  }
+  .login-form-side {
+    padding: 32px 28px 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-only,
+  .desktop-inline,
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .header-main {
+    min-height: 60px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .header-logo-img {
+    height: 44px; 
+    margin: -8px 0 -8px -6px;
+  }
+
+  .avatar-btn {
+    width: 34px;
+    height: 34px;
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  .app-main {
+    padding-top: 16px;
+    padding-bottom: 92px;
+  }
+
+  .page-head {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .page-head h1 {
+    font-size: 19px;
+  }
+
+  .mobile-full-btn {
+    width: 100%;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .kpi-card {
+    padding: 13px 14px;
+  }
+
+  .kpi-value {
+    font-size: 17px;
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .court-card {
+    padding: 15px;
+  }
+
+  .matchup-box {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .vs-circle {
+    display: none;
+  }
+
+  .team-box {
+    padding: 10px 8px;
+    text-align: left;
+  }
+
+  .court-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .court-footer .btn {
+    width: 100%;
+  }
+
+  /* Kartu Antrean & Pemain Mobile */
+  .mobile-queue-list,
+  .mobile-players-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mobile-queue-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    background: var(--surface-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-player-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: var(--surface);
+  }
+
+  .mobile-player-card.row-selected {
+    border-color: var(--primary);
+    background: #f5f8ff;
+  }
+
+  /* Sembunyikan formulir tambah pemain di mobile jika belum dibuka */
+  #addPlayerCard.mobile-hidden {
+    display: none;
+  }
+
+  /* Bilah aksi generator menempel di bawah layar mobile */
+  .gen-apply-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 64px;
+    margin: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    background: var(--surface);
+    z-index: 35;
+    padding: 10px 16px;
+    box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.06);
+  }
+  .gen-apply-bar .btn-row {
+    width: 100%;
+  }
+  .gen-apply-bar .btn-primary {
+    flex: 1;
+  }
+
+  #view-generator {
+    padding-bottom: 68px;
+  }
+
+  /* Pengalih kolom sesi di mobile */
+  .session-col {
+    display: none;
+  }
+  .session-col.active-mobile-col {
+    display: block;
+  }
+
+  .rules-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .payment-split {
+    grid-template-columns: 1fr;
+  }
+
+  .pay-confirm-area .btn-row {
+    flex-direction: column-reverse;
+  }
+  .pay-confirm-area .btn {
+    width: 100%;
+  }
+
+  /* Navigasi Bawah Mobile dengan Indikator Geser */
+  .mobile-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    z-index: 50;
+    padding: 6px;
+  }
+
+  .mnav-indicator {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: calc(100% - 12px);
+    background: var(--primary-soft);
+    border-radius: 11px;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .mnav-btn {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 10.5px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .mnav-btn.active {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .toast-container {
+    bottom: 78px;
+    right: 16px;
+    left: 16px;
+  }
+}
+
+/* Menyamakan tinggi kotak Daftar Pemain (kiri) dengan Daftarkan Pemain Baru (kanan) di desktop */
+@media (min-width: 1141px) {
+  #view-players .two-col-layout {
+    align-items: stretch;
+  }
+
+  #view-players .two-col-layout > .card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #view-players .pagination-bar {
+    margin-top: auto;
+  }
+}

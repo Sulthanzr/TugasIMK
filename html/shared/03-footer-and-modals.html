@@ -1,0 +1,112 @@
+    </main>
+
+    <!-- NAVIGASI BAWAH KHUSUS MOBILE DENGAN INDIKATOR BERGESER -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Navigasi Mobile">
+      <div class="mnav-indicator" id="mnavIndicator"></div>
+      <button class="mnav-btn active" data-view="dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="mnav-btn" data-view="players">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        <span>Pemain</span>
+      </button>
+      <button class="mnav-btn" data-view="generator">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 9-9"/><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/></svg>
+        <span>Generator</span>
+      </button>
+      <button class="mnav-btn" data-view="sessions">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Sesi</span>
+      </button>
+      <button class="mnav-btn" data-view="payment">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Bayar</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- DIALOG KONFIRMASI PEMBAYARAN -->
+  <div class="modal-backdrop" id="confirmPaymentModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close" id="btnClosePayModal" aria-label="Tutup">&times;</button>
+      <div class="modal-icon-danger">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3 class="modal-title" id="modalPayTitle">Akhiri sesi pemain dan konfirmasi pembayaran?</h3>
+      <p class="modal-body">
+        Sesi bermain akan ditutup, status pemain berubah menjadi <strong>Pulang</strong>, dan transaksi dicatat ke Riwayat Sesi &amp; Pembayaran.
+      </p>
+      <p class="modal-warning">Tindakan ini tidak dapat dibatalkan.</p>
+
+      <div class="modal-summary-pill">
+        <div><strong id="modalPayName">—</strong> <span class="text-muted" id="modalPayLevel">• —</span></div>
+        <div><strong id="modalPayGames">0 game</strong> <span class="text-muted">•</span> <strong id="modalPayMethod">QRIS</strong></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="btnModalCancelPay">Kembali</button>
+        <button class="btn btn-danger" id="btnModalConfirmPay">Ya, Akhiri Sesi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIALOG TUKAR PEMAIN (GENERATOR) -->
+  <div class="modal-backdrop" id="swapPlayerModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close" id="btnCloseSwapModal" aria-label="Tutup">&times;</button>
+      <h3 class="modal-title">Tukar Pemain pada Pertandingan</h3>
+      <p class="modal-body">Pilih pemain yang ingin diganti dan pilih penggantinya dari pemain yang sedang menunggu.</p>
+
+      <div class="form-group mt-16">
+        <label for="swapSourceSelect" class="field-label">Pemain saat ini</label>
+        <select id="swapSourceSelect" class="input"></select>
+      </div>
+      <div class="form-group">
+        <label for="swapTargetSelect" class="field-label">Tukar dengan pemain</label>
+        <select id="swapTargetSelect" class="input"></select>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="btnCancelSwap">Batal</button>
+        <button class="btn btn-primary" id="btnConfirmSwap">Terapkan Penukaran</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIALOG UBAH LEVEL PEMAIN -->
+  <div class="modal-backdrop" id="editLevelModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close" id="btnCloseEditLevelModal" aria-label="Tutup">&times;</button>
+      <h3 class="modal-title mb-12">Ubah Level Pemain</h3>
+
+      <div class="edit-level-summary">
+        <strong id="editPlayerName">—</strong>
+        <span class="level-chip" id="editOldLevel">—</span>
+        <span class="arrow-muted">→</span>
+        <span class="level-chip active" id="editNewLevelPreview">—</span>
+      </div>
+
+      <div class="form-group mt-16">
+        <span class="field-label">Level baru</span>
+        <div class="segmented full" id="editLevelSeg">
+          <button type="button" class="seg-btn" data-value="A">Level A</button>
+          <button type="button" class="seg-btn" data-value="B">Level B</button>
+          <button type="button" class="seg-btn" data-value="C">Level C</button>
+        </div>
+      </div>
+
+      <div class="alert-box amber" id="editLevelWarning">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span id="editLevelWarningText">Pilih level baru untuk memperbarui data pemain.</span>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="btnCancelLevel">Batal</button>
+        <button type="button" class="btn btn-primary" id="btnSaveLevel">Simpan Level</button>
+      </div>
+    </div>
+  </div>
+  <!-- WADAH NOTIFIKASI TOAST -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+

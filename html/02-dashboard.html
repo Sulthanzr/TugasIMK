@@ -1,0 +1,92 @@
+      <!-- ==================== LAYAR 1: DASHBOARD UTAMA ==================== -->
+      <section id="view-dashboard" class="view-section active">
+        <div class="page-head">
+          <div>
+            <div class="page-title-row">
+              <h1>Live Court Monitor <span class="desktop-inline">&amp; Ringkasan Antrean</span></h1>
+              <span class="live-badge desktop-only" id="liveMatchBadge" style="display:none;"><span class="pulse-dot"></span> LIVE MATCH</span>
+            </div>
+          </div>
+          <button class="btn btn-primary desktop-only" data-goto="generator">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 9-9"/><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/></svg>
+            Buka Generator Antrean
+          </button>
+        </div>
+
+        <!-- 4 Kartu Ringkasan KPI -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon blue desktop-only">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="kpi-label">Total Pemain Aktif</div>
+              <div class="kpi-value" id="kpiTotal">0 Orang</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon indigo desktop-only">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>
+            </div>
+            <div>
+              <div class="kpi-label">Menunggu <span class="desktop-inline">di Antrean</span></div>
+              <div class="kpi-value text-primary" id="kpiWaiting">0 Pemain</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon amber desktop-only">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div>
+              <div class="kpi-label"><span class="desktop-inline">Sedang </span>Istirahat</div>
+              <div class="kpi-value text-amber" id="kpiResting">0 Pemain</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon green desktop-only">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="kpi-label">Lapangan <span class="desktop-inline">Beroperasi</span></div>
+              <div class="kpi-value text-green" id="kpiCourts">0 / 2 Lapangan</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Lapangan Aktif -->
+        <div class="courts-grid" id="courtsContainer"></div>
+
+        <!-- Antrean Masuk Berikutnya -->
+        <div class="card queue-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#254BF5" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                Antrean Masuk Berikutnya 
+              </h2>
+            </div>
+            <span class="outline-pill-blue" id="queueWaitingBadge">Total 0 Pemain Dalam Daftar Tunggu</span>
+          </div>
+
+          <!-- Tabel Antrean Desktop -->
+          <div class="table-wrap desktop-only">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>URUTAN</th>
+                  <th>MATCHUP RENCANA</th>
+                  <th>KATEGORI &amp; BALANCE SCORE</th>
+                  <th>ALOKASI LAPANGAN</th>
+                  <th>ESTIMASI MULAI</th>
+                  <th class="text-right">AKSI</th>
+                </tr>
+              </thead>
+              <tbody id="upNextTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Daftar Antrean Mobile -->
+          <div class="mobile-only mobile-queue-list" id="upNextMobileList"></div>
+        </div>
+      </section>
+
