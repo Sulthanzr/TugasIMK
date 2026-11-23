@@ -19,6 +19,7 @@ function buatStateKosong() {
     mobileSessionTab: "waiting",
     paymentSelectedPlayerId: null,
     paymentMethod: "QRIS",
+    cashReceived: "",
     genParams: {
       prioritizeZeroGame: true,
       balanceLevel: true,

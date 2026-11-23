@@ -38,45 +38,51 @@ function renderPaymentView() {
   document.getElementById("sumMethod").textContent = state.paymentMethod;
   document.getElementById("sumTotal").textContent = p ? formatRupiah(biaya) : "Rp —";
 
-  // Visual QRIS atau informasi rekening Transfer Bank
+  // Visual gambar QRIS berborder atau kalkulator tunai (Cash)
   const visualEl = document.getElementById("paymentVisualBox");
   if (state.paymentMethod === "QRIS") {
     visualEl.innerHTML = `
       <div class="qr-frame">
-        <svg width="110" height="110" viewBox="0 0 100 100" fill="none">
-          <rect x="6" y="6" width="28" height="28" rx="4" stroke="#254BF5" stroke-width="5"/>
-          <rect x="14" y="14" width="12" height="12" rx="2" fill="#254BF5"/>
-          <rect x="66" y="6" width="28" height="28" rx="4" stroke="#254BF5" stroke-width="5"/>
-          <rect x="74" y="14" width="12" height="12" rx="2" fill="#254BF5"/>
-          <rect x="6" y="66" width="28" height="28" rx="4" stroke="#254BF5" stroke-width="5"/>
-          <rect x="14" y="74" width="12" height="12" rx="2" fill="#254BF5"/>
-          <rect x="44" y="10" width="10" height="10" fill="#254BF5"/>
-          <rect x="44" y="28" width="10" height="10" fill="#64748b"/>
-          <rect x="44" y="44" width="12" height="12" fill="#254BF5"/>
-          <rect x="64" y="44" width="10" height="10" fill="#254BF5"/>
-          <rect x="82" y="44" width="10" height="10" fill="#254BF5"/>
-          <rect x="44" y="66" width="10" height="10" fill="#254BF5"/>
-          <rect x="62" y="66" width="14" height="14" fill="#254BF5"/>
-          <rect x="82" y="74" width="10" height="18" fill="#254BF5"/>
-          <rect x="44" y="84" width="14" height="8" fill="#64748b"/>
-        </svg>
+        <img src="qrissulthan.jpeg" alt="QRIS Pembayaran" class="qris-img" />
       </div>
-      <strong>Kode QRIS • SmashQueue Pro</strong>
-      <small class="text-muted">Pindai kode QR di atas melalui dompet digital atau m-banking.</small>
-      <span class="outline-pill-blue">Area ilustrasi pembayaran</span>
+      <small class="text-muted">Pindai kode QRIS di atas melalui dompet digital atau m-banking.</small>
     `;
   } else {
     visualEl.innerHTML = `
-      <div class="bank-info-card">
-        <span class="soft-pill blue mb-8">Transfer Bank BCA</span>
-        <div class="bank-acc-num">8410 9283 11</div>
-        <div style="font-size:12.5px;font-weight:600;">a.n. Admin SmashQueue Pro</div>
-        <button type="button" class="btn btn-outline btn-sm mt-12 btn-block" onclick="copyBankAcc()">
-          Salin Nomor Rekening
-        </button>
+      <div class="cash-info-card">
+        <div>
+          <span class="soft-pill green">Pembayaran Tunai (Cash)</span>
+        </div>
+
+        <div class="form-group" style="margin-bottom:0;">
+          <label for="cashReceivedInput" class="field-label">Uang diterima (Rp)</label>
+          <input
+            type="number"
+            id="cashReceivedInput"
+            class="input mono"
+            placeholder="Contoh: 50000"
+            min="0"
+            step="1000"
+            value="${state.cashReceived}"
+            ${!p ? "disabled" : ""}
+            oninput="ubahUangCash(this.value)"
+          />
+        </div>
+
+        <div class="cash-quick-row">
+          <button type="button" class="cash-quick-btn" ${!p ? "disabled" : ""} onclick="setUangCash(${biaya})">Uang Pas</button>
+          <button type="button" class="cash-quick-btn" ${!p ? "disabled" : ""} onclick="setUangCash(50000)">Rp 50rb</button>
+          <button type="button" class="cash-quick-btn" ${!p ? "disabled" : ""} onclick="setUangCash(100000)">Rp 100rb</button>
+        </div>
+
+        <div class="cash-change-box" id="cashChangeBox">
+          <span class="cash-change-label" id="cashChangeLabel">Kembalian</span>
+          <strong class="cash-change-val" id="cashChangeVal">Rp 0</strong>
+        </div>
       </div>
-      <small class="text-muted">Pastikan nominal transfer sesuai total tagihan sesi.</small>
+      <small class="text-muted">Terima uang tunai di kasir lalu centang konfirmasi di bawah.</small>
     `;
+    perbaruiKembalianCash();
   }
 
   // Aktifkan tombol konfirmasi hanya jika ada pemain dan kotak centang terisi
@@ -111,10 +117,50 @@ function renderPaymentView() {
   }
 }
 
-function copyBankAcc() {
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText("8410928311");
+// Memperbarui nominal uang tunai yang diketik tanpa memuat ulang kotak input
+function ubahUangCash(nilai) {
+  state.cashReceived = nilai;
+  perbaruiKembalianCash();
+}
+
+// Mengisi cepat nominal uang tunai lewat tombol pecahan
+function setUangCash(nominal) {
+  state.cashReceived = String(nominal);
+  const inputEl = document.getElementById("cashReceivedInput");
+  if (inputEl) inputEl.value = state.cashReceived;
+  perbaruiKembalianCash();
+}
+
+// Menghitung kembalian atau kekurangan uang tunai secara otomatis
+function perbaruiKembalianCash() {
+  const box = document.getElementById("cashChangeBox");
+  const label = document.getElementById("cashChangeLabel");
+  const val = document.getElementById("cashChangeVal");
+  if (!box || !label || !val) return;
+
+  const p = getPlayer(state.paymentSelectedPlayerId);
+  if (!p) {
+    box.classList.remove("kurang");
+    label.textContent = "Kembalian";
+    val.textContent = "—";
+    return;
   }
-  showToast("Nomor rekening BCA 8410 9283 11 berhasil disalin.");
+
+  const tagihan = calcFee(p.games);
+  const diterima = Number(state.cashReceived || 0);
+
+  if (state.cashReceived === "") {
+    box.classList.remove("kurang");
+    label.textContent = "Kembalian";
+    val.textContent = "Rp 0";
+  } else if (diterima < tagihan) {
+    box.classList.add("kurang");
+    label.textContent = "Kurang";
+    val.textContent = formatRupiah(tagihan - diterima);
+  } else {
+    box.classList.remove("kurang");
+    label.textContent = "Kembalian";
+    val.textContent = formatRupiah(diterima - tagihan);
+  }
 }
 

@@ -34,28 +34,100 @@
   gap: 10px;
 }
 
+/* Bingkai berborder untuk gambar QRIS */
 .qr-frame {
-  background: #fff;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 14px;
+  border: 2px solid var(--primary-border);
   box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.bank-info-card {
+.qris-img {
   width: 100%;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px;
-  text-align: left;
+  max-width: 215px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
-.bank-acc-num {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 16px;
-  font-weight: 700;
+
+/* Kartu Kalkulator Pembayaran Tunai (Cash) */
+.cash-info-card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cash-quick-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.cash-quick-btn {
+  border: 1px solid var(--border-strong);
+  background: var(--surface-soft);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.cash-quick-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--primary-soft);
   color: var(--primary);
-  margin: 4px 0;
+}
+
+.cash-quick-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cash-change-box {
+  background: var(--green-soft);
+  border: 1px solid var(--green-border);
+  border-radius: 10px;
+  padding: 11px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cash-change-box.kurang {
+  background: var(--danger-soft);
+  border-color: #fecaca;
+}
+
+.cash-change-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.cash-change-val {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-cta);
+}
+
+.cash-change-box.kurang .cash-change-val {
+  color: var(--danger);
 }
 
 .pay-confirm-area {
